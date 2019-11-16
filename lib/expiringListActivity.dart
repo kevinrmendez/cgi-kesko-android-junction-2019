@@ -1,6 +1,7 @@
 import 'package:cgi_kesko/product.dart';
 import 'package:cgi_kesko/recipeList.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import './recipe.dart';
 import './data.dart';
@@ -18,8 +19,33 @@ class ExpiringListActivity extends StatefulWidget {
 class _ExpiringListActivityState extends State<ExpiringListActivity> {
   // List<String> litems = ["1", "2", "Third", "4"];
   List<Product> products;
+
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
+  void firebaseCloudMessagingListeners() {
+    _firebaseMessaging.getToken().then((token) {
+      print(token);
+    });
+
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print('on message $message');
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print('on resume $message');
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print('on launch $message');
+      },
+    );
+    _firebaseMessaging.getToken().then((token) {
+      print(" TOKEN : $token");
+    });
+  }
+
   @override
   void initState() {
+    firebaseCloudMessagingListeners();
     super.initState();
   }
 
@@ -27,7 +53,7 @@ class _ExpiringListActivityState extends State<ExpiringListActivity> {
     return Product(
         image: data["image"],
         name: data["name"],
-        expirationDate: data["category"]);
+        expirationDate: data["expirationDate"]);
   }
 
   Widget _cardDetailText(text) {
@@ -59,6 +85,8 @@ class _ExpiringListActivityState extends State<ExpiringListActivity> {
 
               return ListTile(
                 title: Text(product.name),
+                subtitle:
+                    Text('Expiration date: ${product.expirationDate} days'),
                 leading: CircleAvatar(
                   backgroundImage: NetworkImage(product
                       .image), // no matter how big it is, it won't overflow

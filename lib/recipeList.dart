@@ -55,7 +55,7 @@ class _RecipeListActivityState extends State<RecipeListActivity> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Expiring List"),
+          title: Text("Recipe List"),
         ),
         body: ListView.builder(
             itemCount: data.length,

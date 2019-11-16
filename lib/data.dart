@@ -265,7 +265,7 @@ final data = [
     "image":
         "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "title": "Roasted chickpeas",
-    "category": "snacks",
+    "category": "bread",
     "time": 40,
     "serves": 4,
     "difficulty": "super easy",
@@ -292,7 +292,7 @@ final data = [
     "image":
         "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "title": "Chickpeas pesto pasta",
-    "category": "meals",
+    "category": "bread",
     "time": 40,
     "serves": 2,
     "difficulty": "easy",

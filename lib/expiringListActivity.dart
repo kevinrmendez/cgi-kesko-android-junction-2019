@@ -8,6 +8,7 @@ import './data.dart';
 import 'imageActivity.dart';
 import './product.dart';
 import './productsData.dart';
+import './AppDrawer.dart';
 
 class ExpiringListActivity extends StatefulWidget {
   ExpiringListActivity({Key key}) : super(key: key);
@@ -75,13 +76,23 @@ class _ExpiringListActivityState extends State<ExpiringListActivity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: AppDrawer(),
         appBar: AppBar(
-          title: Text("Expiring List"),
+          title: Text("Expiring Products"),
         ),
         body: ListView.builder(
             itemCount: productsData.length,
             itemBuilder: (BuildContext ctxt, int index) {
               Product product = _productBuilder(productsData[index]);
+              // if (index == 0) {
+              //   return Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Text(
+              //       'Expiring products',
+              //       style: TextStyle(fontSize: 30),
+              //     ),
+              //   );
+              // }
 
               return ListTile(
                 title: Text(product.name),

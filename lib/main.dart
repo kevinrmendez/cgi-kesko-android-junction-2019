@@ -3,6 +3,8 @@ import 'package:cgi_kesko/recipeList.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+const GreyColor = const Color(0xFFEEEEEE);
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
       home: ExpiringListActivity(),
     );

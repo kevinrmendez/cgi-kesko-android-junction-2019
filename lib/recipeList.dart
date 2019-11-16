@@ -1,3 +1,4 @@
+import 'package:cgi_kesko/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import './recipe.dart';
@@ -5,7 +6,8 @@ import './data.dart';
 import 'imageActivity.dart';
 
 class RecipeListActivity extends StatefulWidget {
-  RecipeListActivity({Key key}) : super(key: key);
+  final String product;
+  RecipeListActivity({Key key, this.product}) : super(key: key);
 
   @override
   _RecipeListActivityState createState() => _RecipeListActivityState();
@@ -53,14 +55,22 @@ class _RecipeListActivityState extends State<RecipeListActivity> {
 
   @override
   Widget build(BuildContext context) {
+    List filterList = [];
+
+    data.forEach((item) {
+      if (item["category"] == widget.product) {
+        filterList.add(item);
+      }
+    });
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Recipe List"),
         ),
         body: ListView.builder(
-            itemCount: data.length,
+            itemCount: filterList.length,
             itemBuilder: (BuildContext ctxt, int index) {
-              Recipe recipe = _recipeBuilder(data[index]);
+              Recipe recipe = _recipeBuilder(filterList[index]);
               return Container(
                 margin: EdgeInsets.symmetric(vertical: 5),
                 height: MediaQuery.of(context).size.height * .3,
@@ -88,7 +98,7 @@ class _RecipeListActivityState extends State<RecipeListActivity> {
                           imageUrl: recipe.image,
                           placeholder: (context, url) => Container(
                             width: MediaQuery.of(context).size.width,
-                            color: Colors.red,
+                            color: GreyColor,
                             // constraints: BoxConstraints(maxHeight: 30, maxWidth: 30),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -103,7 +113,7 @@ class _RecipeListActivityState extends State<RecipeListActivity> {
                           errorWidget: (context, url, error) => Container(
                               height: MediaQuery.of(context).size.height,
                               width: MediaQuery.of(context).size.width,
-                              color: Colors.red,
+                              color: GreyColor,
                               child: Icon(
                                 Icons.error,
                                 size: 40,

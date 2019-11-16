@@ -95,7 +95,9 @@ class _ExpiringListActivityState extends State<ExpiringListActivity> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => RecipeListActivity()),
+                        builder: (context) => RecipeListActivity(
+                              product: product.name,
+                            )),
                   );
                 },
               );

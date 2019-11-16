@@ -3,7 +3,7 @@ final data = [
     "image":
         "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "title": "Chocolate chia pudding",
-    "category": "desserts",
+    "category": "milk",
     "time": 5,
     "serves": 4,
     "difficulty": "easy",
@@ -26,13 +26,18 @@ final data = [
     ],
     "suggestions": "",
     "labels": ["berries", "chocolate", "fresh", "chia", "pudding"],
-    "nutrition": []
+    "nutrition": [
+      {"name": "carbs", "amount": 100},
+      {"name": "protein", "amount": 100},
+      {"name": "fat", "amount": 100},
+      {"name": "fiber", "amount": 100}
+    ]
   },
   {
     "image":
         "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "title": "Vegan brownies",
-    "category": "desserts",
+    "category": "milk",
     "time": 55,
     "serves": 12,
     "difficulty": "easy",
@@ -65,7 +70,7 @@ final data = [
     "image":
         "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "title": " Buffalo Cauliflower Bites",
-    "category": "snacks",
+    "category": "eggs",
     "time": 35,
     "serves": 6,
     "difficulty": "easy",
@@ -98,7 +103,7 @@ final data = [
     "image":
         "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "title": "Vegan Corn Cream",
-    "category": "soups",
+    "category": "eggs",
     "time": 40,
     "serves": 6,
     "difficulty": "easy",
@@ -140,7 +145,7 @@ final data = [
     "image":
         "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "title": "Thai Sweet Potato Noodle Bowl",
-    "category": "meals",
+    "category": "bread",
     "time": 25,
     "serves": 4,
     "difficulty": "easy",
@@ -174,7 +179,7 @@ final data = [
     "image":
         "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "title": "Carrot Ginger Salad",
-    "category": "salads",
+    "category": "bread",
     "time": 25,
     "serves": 4,
     "difficulty": "easy",
@@ -249,7 +254,12 @@ final data = [
     ],
     "suggestions": "",
     "labels": ["strawberry", "oats", "morning"],
-    "nutrition": []
+    "nutrition": [
+      {"name": "carbs", "amount": 100},
+      {"name": "protein", "amount": 100},
+      {"name": "fat", "amount": 100},
+      {"name": "fiber", "amount": 100}
+    ]
   },
   {
     "image":

@@ -25,6 +25,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   firebase_messaging:
   firebase_core:
+  cached_network_image:
+  http:
 
 dev_dependencies:
   flutter_test:

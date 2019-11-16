@@ -58,21 +58,21 @@ class AppDrawer extends StatelessWidget {
                           ExpiringListActivity()));
                 },
               ),
-              ListTile(
-                title: Text(
-                  "Recipes",
-                  // style: TextStyle(color: Theme.of(context).primaryColor),
-                ),
-                trailing: Icon(
-                  Icons.favorite,
-                  color: Theme.of(context).accentColor,
-                ),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => RecipeListActivity()));
-                },
-              ),
+              // ListTile(
+              //   title: Text(
+              //     "Recipes",
+              //     // style: TextStyle(color: Theme.of(context).primaryColor),
+              //   ),
+              //   trailing: Icon(
+              //     Icons.favorite,
+              //     color: Theme.of(context).accentColor,
+              //   ),
+              //   onTap: () {
+              //     Navigator.of(context).pop();
+              //     Navigator.of(context).push(MaterialPageRoute(
+              //         builder: (BuildContext context) => RecipeListActivity()));
+              //   },
+              // ),
             ],
           ),
         ),

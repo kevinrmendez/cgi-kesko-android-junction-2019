@@ -1,3 +1,4 @@
+import 'package:cgi_kesko/IngredientCheckbox.dart';
 import 'package:cgi_kesko/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +17,6 @@ class ImageActivity extends StatefulWidget {
 
 class ImageActivityState extends State<ImageActivity> {
   int index;
-  // List<Ingredient> ingredientList = List();
 
   List<Widget> steps(List steps) {
     List<Widget> list = List();
@@ -190,9 +190,9 @@ class ImageActivityState extends State<ImageActivity> {
                                   ],
                                 ),
                               ),
-                              // IngredientList(
-                              //   ingredientData: widget.recipe.ingredients,
-                              // ),
+                              IngredientList(
+                                ingredientData: widget.recipe.ingredients,
+                              ),
                               Card(
                                 child: Column(
                                   children: <Widget>[
@@ -203,16 +203,6 @@ class ImageActivityState extends State<ImageActivity> {
                                   ],
                                 ),
                               ),
-                              widget.recipe.suggestions != null &&
-                                      widget.recipe.suggestions != ""
-                                  ? Card(
-                                      child: _contentMargin(children: [
-                                      SubtitleWidget(
-                                        "Chef's Suggestions",
-                                      ),
-                                      Text(widget.recipe.suggestions),
-                                    ]))
-                                  : SizedBox(),
                               widget.recipe.nutrition != null
                                   ? Card(
                                       child: Container(
@@ -225,14 +215,6 @@ class ImageActivityState extends State<ImageActivity> {
                                             Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
-                                              // children: <Widget>[
-                                              //   Text(
-                                              //       "Carbs: ${widget.recipe.nutrition["carbs"]}"),
-                                              //   Text(
-                                              //       "Fat: ${widget.recipe.nutrition["fat"]}"),
-                                              //   Text(
-                                              //       "Protein: ${widget.recipe.nutrition["protein"]}"),
-                                              // ],
                                               children: _buildNutritionInfo(
                                                   widget.recipe.nutrition),
                                             ),
@@ -286,10 +268,31 @@ class ImageActivityState extends State<ImageActivity> {
     );
   }
 
-  IngredientList({List ingredientData}) {
+  Widget IngredientList({List ingredientData}) {
+    List<Widget> list = [];
     ingredientData.forEach((item) {
-      Text(item);
+      var row = Container(
+          height: 30,
+          child: Row(
+            children: <Widget>[
+              IngredientCheckbox(),
+              Flexible(
+                fit: FlexFit.loose,
+                child: Container(
+                  child: Text(
+                    item,
+                    overflow: TextOverflow.visible,
+                  ),
+                ),
+              )
+            ],
+          ));
+      list.add(row);
     });
+
+    return Column(
+      children: list,
+    );
   }
 }
 

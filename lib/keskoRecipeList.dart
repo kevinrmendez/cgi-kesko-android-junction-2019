@@ -72,7 +72,7 @@ class _KeskoRecipeListActivityState extends State<KeskoRecipeListActivity> {
     return Scaffold(
         appBar: AppBar(
           // title: Text("Check these recipes with ${widget.product}"),
-          title: Text("Check these recipes"),
+          title: Text("All recipes"),
         ),
         body: FutureBuilder(
           builder: (context, projectSnap) {

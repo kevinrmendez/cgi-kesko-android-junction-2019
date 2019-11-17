@@ -81,7 +81,7 @@ class AppDrawer extends StatelessWidget {
                   // style: TextStyle(color: Theme.of(context).primaryColor),
                 ),
                 trailing: Icon(
-                  Icons.settings,
+                  Icons.filter_list,
                   color: Theme.of(context).accentColor,
                 ),
                 onTap: () {

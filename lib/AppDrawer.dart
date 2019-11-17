@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cgi_kesko/expiringListActivity.dart';
+import 'package:cgi_kesko/keskoRecipeList.dart';
 import 'package:cgi_kesko/recipeList.dart';
 import 'package:flutter/material.dart';
 
@@ -72,6 +73,22 @@ class AppDrawer extends StatelessWidget {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => Settings()));
+                },
+              ),
+              ListTile(
+                title: Text(
+                  "Recipes",
+                  // style: TextStyle(color: Theme.of(context).primaryColor),
+                ),
+                trailing: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).accentColor,
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          KeskoRecipeListActivity()));
                 },
               ),
               // ListTile(

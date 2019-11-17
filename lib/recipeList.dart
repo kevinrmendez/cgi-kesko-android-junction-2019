@@ -65,7 +65,7 @@ class _RecipeListActivityState extends State<RecipeListActivity> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Check this recipes with ${widget.product}"),
+          title: Text("Check these recipes with ${widget.product}"),
         ),
         body: ListView.builder(
             itemCount: filterList.length,

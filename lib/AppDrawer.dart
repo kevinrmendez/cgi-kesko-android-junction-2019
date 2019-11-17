@@ -77,7 +77,7 @@ class AppDrawer extends StatelessWidget {
               ),
               ListTile(
                 title: Text(
-                  "Recipes",
+                  "All Recipes",
                   // style: TextStyle(color: Theme.of(context).primaryColor),
                 ),
                 trailing: Icon(

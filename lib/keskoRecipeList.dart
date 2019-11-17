@@ -1,3 +1,4 @@
+import 'package:cgi_kesko/imageActivityKesko.dart';
 import 'package:cgi_kesko/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -6,6 +7,7 @@ import './data.dart';
 import 'imageActivity.dart';
 import 'dart:convert';
 import './keskoRecipeList.dart' as jsonData;
+import './recipeKesko.dart';
 
 class KeskoRecipeListActivity extends StatefulWidget {
   final String product;
@@ -17,7 +19,7 @@ class KeskoRecipeListActivity extends StatefulWidget {
 }
 
 class _KeskoRecipeListActivityState extends State<KeskoRecipeListActivity> {
-  List<Recipe> recipes;
+  List<RecipeKesko> recipes;
   List parsedJson;
 
   Future loadData() async {
@@ -33,20 +35,12 @@ class _KeskoRecipeListActivityState extends State<KeskoRecipeListActivity> {
     super.initState();
   }
 
-  Recipe _recipeBuilder(data) {
-    return Recipe(
-        image: data["image"],
-        title: data["title"],
-        category: data["category"],
-        difficulty: data["difficulty"],
-        suggestions: data["suggestions"],
-        time: data["time"],
-        serves: data["serves"],
-        ingredients: data["ingredients"],
-        steps: data["steps"],
-        labels: data["labels"],
-        nutrition: data["nutrition"],
-        isFavorite: false);
+  RecipeKesko _recipeBuilder(data) {
+    return RecipeKesko(
+        image: data["PictureUrl"],
+        name: data["Name"],
+        ingredients: data["Ingredients"],
+        instructions: data["Instructions"]);
   }
 
   Widget _cardDetailText(text) {
@@ -77,7 +71,8 @@ class _KeskoRecipeListActivityState extends State<KeskoRecipeListActivity> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Check these recipes with ${widget.product}"),
+          // title: Text("Check these recipes with ${widget.product}"),
+          title: Text("Check these recipes"),
         ),
         body: FutureBuilder(
           builder: (context, projectSnap) {
@@ -93,6 +88,7 @@ class _KeskoRecipeListActivityState extends State<KeskoRecipeListActivity> {
             return ListView.builder(
               itemCount: projectSnap.data.length,
               itemBuilder: (context, index) {
+                RecipeKesko recipe = _recipeBuilder(projectSnap.data[index]);
                 // ProjectModel project = projectSnap.data[index];
                 return Container(
                   margin: EdgeInsets.symmetric(vertical: 5),
@@ -100,13 +96,13 @@ class _KeskoRecipeListActivityState extends State<KeskoRecipeListActivity> {
                   width: MediaQuery.of(context).size.width,
                   child: GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => ImageActivity(
-                      //             recipe: recipe,
-                      //           )),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ImageActivityKesko(
+                                  recipe: recipe,
+                                )),
+                      );
                     },
                     child: Stack(
                         alignment: AlignmentDirectional.bottomEnd,
@@ -118,7 +114,7 @@ class _KeskoRecipeListActivityState extends State<KeskoRecipeListActivity> {
                                   image: DecorationImage(
                                       image: imageProvider, fit: BoxFit.cover)),
                             ),
-                            imageUrl: projectSnap.data[index]["PictureUrl"],
+                            imageUrl: recipe.image,
                             placeholder: (context, url) => Container(
                               width: MediaQuery.of(context).size.width,
                               color: GreyColor,
@@ -150,7 +146,8 @@ class _KeskoRecipeListActivityState extends State<KeskoRecipeListActivity> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
                                 _cardDetailText(
-                                    projectSnap.data[index]["Name"]),
+                                    // projectSnap.data[index]["Name"]),
+                                    recipe.name),
                                 // _cardDetailText("${recipe.time} min")
                               ],
                             ),
